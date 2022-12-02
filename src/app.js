@@ -3,6 +3,7 @@ require('express-async-errors');
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
+const { contacts } = require('./contact');
 
 const port = process.env.PORT || 5000;
 const host = process.env.HOST || 'localhost';
@@ -14,6 +15,20 @@ app.use(express.urlencoded({ extended: false }));
 // routes
 app.get('/hello', (req, res) => {
     res.json({ message: 'Hello world' });
+});
+
+app.get('/contacts', (req, res) => {
+    res.json({ status: 'Success', data: contacts });
+});
+
+app.post('/contacts', (req, res) => {
+    // get data from request body
+    const { full_name, phone_number } = req.body;
+
+    const newData = { id: contacts.length++, full_name, phone_number };
+    contacts.push(newData);
+
+    res.json({ status: 'Success', message: 'Contact created', data: newData });
 });
 
 // 404 endpoint middleware

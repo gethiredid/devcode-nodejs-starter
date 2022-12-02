@@ -1,4 +1,4 @@
-# Node.js boilerplate with express.js
+# Devcode node.js starter with express.js
 
 ## Package yang digunakan
 
@@ -40,7 +40,7 @@ docker run --network="host" -e API_URL=http://localhost:5000 alfi08/hello-unit-t
 ```
 
 
-## Masukan projek ke docker hub
+## Upload projek ke docker hub
 Pastikan sudah memiliki akun docker hub, dan login akun docker anda di lokal dengan perintah `docker login`.
 
 Setelah itu jalankan perintah berikut untuk push docker image lokal ke docker hub.
