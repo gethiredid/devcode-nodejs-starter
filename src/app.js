@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const mysql = require('mysql2/promise');
+const { migration } = require('./db');
 
 const port = process.env.PORT || 5000;
 const host = process.env.HOST || 'localhost';
@@ -17,16 +17,32 @@ app.get('/hello', (req, res) => {
 });
 
 // get all contacts
-app.get('/contacts', (req, res) => {
-    res.json({ status: 'Success' });
+app.get('/contacts', async (req, res) => {
+    // query for getting all data from contacts table
+    const [rows] = await db.query(`SELECT * FROM contacts`);
+    res.json({ status: 'success', data: rows });
 });
 
 // create contact
-app.post('/contacts', (req, res) => {
+app.post('/contacts', async (req, res) => {
     // get data from request body
     const { full_name, phone_number } = req.body;
 
-    res.json({ status: 'Success' });
+    // insert data into contacts table
+    const [rows] = await db.query(
+        `INSERT INTO contacts(full_name,  phone_number) values(?,?)`,
+        [full_name, phone_number]
+    );
+
+    res.json({
+        status: 'success',
+        message: 'Contact created',
+        data: {
+            id: rows.insertId,
+            full_name,
+            phone_number,
+        },
+    });
 });
 
 // 404 endpoint middleware
@@ -45,5 +61,10 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(port);
-console.log(`Server run on http://${host}:${port}/`);
+const run = async () => {
+    await migration(); // running migration before server
+    app.listen(port); // running server
+    console.log(`Server run on http://${host}:${port}/`);
+};
+
+run();
