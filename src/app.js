@@ -16,15 +16,20 @@ app.get('/hello', (req, res) => {
     res.json({ message: 'Hello world' });
 });
 
+// get all contacts
 app.get('/contacts', (req, res) => {
     res.json({ status: 'Success', data: contacts });
 });
 
+// create contact
 app.post('/contacts', (req, res) => {
     // get data from request body
     const { full_name, phone_number } = req.body;
 
+    // create new data object
     const newData = { id: contacts.length++, full_name, phone_number };
+
+    // push new data to contacts
     contacts.push(newData);
 
     res.json({ status: 'Success', message: 'Contact created', data: newData });
