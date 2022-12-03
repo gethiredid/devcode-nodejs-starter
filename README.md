@@ -1,4 +1,4 @@
-# Devcode node.js starter with express.js
+# Memulai Backend dengan nodejs
 
 ## Package yang digunakan
 
@@ -33,14 +33,16 @@ docker run -e PORT=5000 -p 5000:5000 nodejs-hello
 
 ### Jalankan unit testing
 
-pastikan port ketika menjalankan docker image sama dengan `API_URL` ketika ingin menjalankan unit testing
+Pastikan port ketika menjalankan docker image sama dengan `API_URL` ketika ingin menjalankan unit testing.
+
+Jalankan perintah berikut untuk menjalankan unit testing di local:
 
 ```
-docker run --network="host" -e API_URL=http://localhost:5000 alfi08/hello-unit-testing
+docker run --network="host" -e API_URL=http://localhost:5000 -e LEVEL=2 alfi08/hello-unit-testing
 ```
 
 
-## Upload projek ke docker hub
+## Masukan projek ke docker hub
 Pastikan sudah memiliki akun docker hub, dan login akun docker anda di lokal dengan perintah `docker login`.
 
 Setelah itu jalankan perintah berikut untuk push docker image lokal ke docker hub.
