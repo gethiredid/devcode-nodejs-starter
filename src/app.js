@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const { contacts } = require('./contact');
+const { CONTACTS } = require('./contact');
 
 const port = process.env.PORT || 5000;
 const host = process.env.HOST || 'localhost';
@@ -18,20 +18,20 @@ app.get('/hello', (req, res) => {
 
 // get all contacts
 app.get('/contacts', (req, res) => {
-    res.json({ status: 'Success', data: contacts });
+    res.json({ status: 'Success', data: CONTACTS });
 });
 
 // create contact
 app.post('/contacts', (req, res) => {
     // get data from request body
-    const { full_name, phone_number } = req.body;
+    const { full_name, phone_number, email } = req.body;
 
     // create new data object
-    const newData = { id: contacts.length++, full_name, phone_number };
+    const newData = { id: CONTACTS.length + 1, full_name, phone_number, email };
 
     // push new data to contacts
-    contacts.push(newData);
-
+    CONTACTS.push(newData);
+    
     res.json({ status: 'Success', message: 'Contact created', data: newData });
 });
 
