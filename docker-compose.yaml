@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123123
+      - MYSQL_DATABASE=contact-manager
+    ports:
+      - 3306:3306
+    volumes:
+      - contact-manager-mysql-data:/var/lib/mysql
+      - contact-manager-mysql-config:/etc/mysql
+  node_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      MYSQL_DBNAME: contact-manager
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123123
+      MYSQL_HOST: db
+    volumes:
+      - ./:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+volumes:
+  contact-manager-mysql-data:
+  contact-manager-mysql-config:

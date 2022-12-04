@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const { migration } = require('./db');
+const { migration, db } = require('./db');
 
 const port = process.env.PORT || 5000;
 const host = process.env.HOST || 'localhost';
@@ -20,27 +20,28 @@ app.get('/hello', (req, res) => {
 app.get('/contacts', async (req, res) => {
     // query for getting all data from contacts table
     const [rows] = await db.query(`SELECT * FROM contacts`);
-    res.json({ status: 'success', data: rows });
+    res.json({ status: 'Success', data: rows });
 });
 
 // create contact
 app.post('/contacts', async (req, res) => {
     // get data from request body
-    const { full_name, phone_number } = req.body;
+    const { full_name, phone_number, email } = req.body;
 
     // insert data into contacts table
     const [rows] = await db.query(
-        `INSERT INTO contacts(full_name,  phone_number) values(?,?)`,
-        [full_name, phone_number]
+        `INSERT INTO contacts(full_name, phone_number, email) values(?,?,?)`,
+        [full_name, phone_number, email]
     );
 
     res.json({
-        status: 'success',
+        status: 'Success',
         message: 'Contact created',
         data: {
             id: rows.insertId,
             full_name,
             phone_number,
+            email,
         },
     });
 });
