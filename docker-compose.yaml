@@ -23,7 +23,7 @@ services:
       MYSQL_PASSWORD: 123123
       MYSQL_HOST: db
     volumes:
-      - ./:/app
+      - ./:/nodejs_hello
     ports:
       - "5000:5000"
     depends_on:
