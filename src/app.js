@@ -38,13 +38,68 @@ app.post('/contacts', async (req, res) => {
         status: 'Success',
         message: 'Contact created',
         data: {
-            id: rows.insertId,
+            id: +rows.insertId,
             full_name,
             phone_number,
             email,
         },
     });
 });
+
+// update contact
+app.put('/contacts/:id', async (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+
+    // check if body request empty
+    if (Object.keys(body).length === 0) {
+        return res.json({
+            message: 'no contact updated',
+        });
+    }
+
+    let query = ``;
+    const values = [];
+
+    // create query based on existing column(full_name, email, phone_number)
+    for (const col in body) {
+        if (!query.length) {
+            query += `UPDATE contacts set ${col} = ?`;
+        } else {
+            query += `, ${col} = ? `;
+        }
+        values.push(body[col]);
+    }
+
+    // add where query 
+    query += `where id = ?`;
+    values.push(id);
+
+    // run query
+    await db.query(query, values);
+
+    res.json({
+        status: 'Success',
+        message: 'Contact updated',
+        data: {
+            id: +id,
+            ...body
+        }
+    });
+})
+
+// delete contact
+app.delete('/contacts/:id', async (req, res) => {
+    const { id } = req.params;
+
+    await db.query(`DELETE FROM contacts where id = ?`, [id]);
+
+    res.json({
+        status: 'Success',
+        message: 'Contact deleted',
+        deletedId: +id,
+    });
+})
 
 // 404 endpoint middleware
 app.all('*', (req, res) => {
