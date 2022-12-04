@@ -28,6 +28,26 @@ app.post('/contacts', async (req, res) => {
     // get data from request body
     const { full_name, phone_number, email } = req.body;
 
+    if (!full_name || !phone_number || !email) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: 'full_name, phone_number, and email is required',
+        });
+    }
+
+    // check if data is exist
+    const [check] = await db.query(
+        `select * from contacts where email = ? and full_name = ? and phone_number = ?`,
+        [email, full_name, phone_number]
+    );
+
+    if (check.length) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: 'full_name, phone_number, and email is duplicate',
+        });
+    }
+
     // insert data into contacts table
     const [rows] = await db.query(
         `INSERT INTO contacts(full_name, phone_number, email) values(?,?,?)`,
@@ -53,8 +73,17 @@ app.put('/contacts/:id', async (req, res) => {
 
     // check if body request empty
     if (Object.keys(body).length === 0) {
-        return res.json({
+        return res.status(400).json({
+            status: 'Failed',
             message: 'no contact updated',
+        });
+    }
+
+    const [check] = await db.query(`SELECT * FROM contacts where id = ?`, [id]);
+    if (!check.length) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: `Contact with id ${id} is not found`,
         });
     }
 
@@ -71,7 +100,7 @@ app.put('/contacts/:id', async (req, res) => {
         values.push(body[col]);
     }
 
-    // add where query 
+    // add where query
     query += `where id = ?`;
     values.push(id);
 
@@ -83,14 +112,22 @@ app.put('/contacts/:id', async (req, res) => {
         message: 'Contact updated',
         data: {
             id: +id,
-            ...body
-        }
+            ...body,
+        },
     });
-})
+});
 
 // delete contact
 app.delete('/contacts/:id', async (req, res) => {
     const { id } = req.params;
+
+    const [check] = await db.query(`SELECT * FROM contacts where id = ?`, [id]);
+    if (!check.length) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: `Contact with id ${id} is not found`,
+        });
+    }
 
     await db.query(`DELETE FROM contacts where id = ?`, [id]);
 
@@ -99,7 +136,7 @@ app.delete('/contacts/:id', async (req, res) => {
         message: 'Contact deleted',
         deletedId: +id,
     });
-})
+});
 
 // 404 endpoint middleware
 app.all('*', (req, res) => {
