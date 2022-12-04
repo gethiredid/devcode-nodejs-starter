@@ -63,7 +63,7 @@ app.use((err, req, res, next) => {
 });
 
 const run = async () => {
-    await migration(); // running migration before server
+    await migration(); // 👈 running migration before server
     app.listen(port); // running server
     console.log(`Server run on http://${host}:${port}/`);
 };

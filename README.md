@@ -22,6 +22,34 @@ docker-compose up -d --force --recreate
 - install package `npm install`
 - jalankan projek dengan perintah `npm start` atau `npm run dev` untuk mode development
 
+## Migration 
+
+Migrasi table berada pada fungsi `migration` di file `db.js`, fungsi migration dijalankan didalam fungsi `run` sebelum menjalankan server yang berada pada `app.js`. Anda bisa menyesuaikan fungsi `migration` dalam file `db.js` sesuai struktur data pada tabel yang ingin dibuat.
+
+Contoh ketika ingin membuat 2 tabel: 
+```
+await db.query(
+        `
+        CREATE TABLE IF NOT EXISTS users (
+        id int not null auto_increment,
+        email varchar(255) not null,
+        password varchar(255) not null,
+        primary key (id)
+        )
+    `
+);
+
+await db.query(
+        `
+        CREATE TABLE IF NOT EXISTS city (
+        id int not null auto_increment,
+        city_name varchar(255) not null,
+        primary key (id)
+        )
+    `
+);
+```
+
 # Menjalankan unit testing dengan docker
 
 Pastikan environment database dan port API pada file `.env` sama dengan `file docker-compose.yaml`.
