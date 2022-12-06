@@ -25,7 +25,7 @@ services:
     volumes:
       - ./:/nodejs_hello
     ports:
-      - "5000:5000"
+      - "3030:3030"
     depends_on:
       - db
 
