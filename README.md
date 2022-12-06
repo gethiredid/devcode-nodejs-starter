@@ -57,7 +57,7 @@ Dan pastikan anda telah menjalakan database dan api pada docker lokal, kalau bel
 
 Jalankan perintah berikut untuk melakukan unit testing:
 ```
-docker run --network="host" -e API_URL=http://localhost:5000 -e LEVEL=3 alfi08/hello-unit-testing
+docker run --network="host" -e API_URL=http://localhost:3030 -e LEVEL=3 alfi08/hello-unit-testing
 ```
 
 ## Upload projek ke docker hub
