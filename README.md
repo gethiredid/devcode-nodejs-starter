@@ -24,11 +24,11 @@ docker build . -t nodejs-hello
 ```
 
 ## Jalankan docker image
-Jalankan docker image dengan perintah `docker run -e PORT=5000 -p 5000:5000 {docker image}`
+Jalankan docker image dengan perintah `docker run -e PORT=3030 -p 3030:3030 {docker image}`
 
 contoh: 
 ```
-docker run -e PORT=5000 -p 5000:5000 nodejs-hello
+docker run -e PORT=3030 -p 3030:3030 nodejs-hello
 ```
 
 ### Jalankan unit testing
@@ -38,7 +38,7 @@ Pastikan port ketika menjalankan docker image sama dengan `API_URL` ketika ingin
 Jalankan perintah berikut untuk menjalankan unit testing di local:
 
 ```
-docker run --network="host" -e API_URL=http://localhost:5000 -e LEVEL=1 alfi08/hello-unit-testing
+docker run --network="host" -e API_URL=http://localhost:3030 -e LEVEL=1 alfi08/hello-unit-testing
 ```
 
 
@@ -48,6 +48,7 @@ Pastikan sudah memiliki akun docker hub, dan login akun docker anda di lokal den
 Setelah itu jalankan perintah berikut untuk push docker image lokal ke docker hub.
 
 ```
+docker build . -t nodejs-hello
 docker tag nodejs-hello {username docker}/nodejs-hello
 docker push {username docker}/nodejs-hello
 ```

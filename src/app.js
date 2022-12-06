@@ -4,7 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3030;
 const host = process.env.HOST || 'localhost';
 
 app.use(morgan('dev'));
