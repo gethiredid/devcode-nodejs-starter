@@ -57,7 +57,7 @@ Dan pastikan anda telah menjalakan database dan api pada docker lokal, kalau bel
 
 Jalankan perintah berikut untuk melakukan unit testing:
 ```
-docker run --network="host" -e API_URL=http://localhost:5000 -e LEVEL=3 alfi08/hello-unit-testing
+docker run --network="host" -e API_URL=http://localhost:3030 -e LEVEL=3 alfi08/hello-unit-testing
 ```
 
 ## Upload projek ke docker hub
@@ -75,6 +75,7 @@ Pastikan sudah memiliki akun docker hub, dan login akun docker anda di lokal den
 Setelah itu jalankan perintah berikut untuk push docker image lokal ke docker hub.
 
 ```
+docker build . -t nodejs-contact-manager
 docker tag nodejs-contact-manager {username docker}/nodejs-contact-manager
 docker push {username docker}/nodejs-contact-manager
 ```
