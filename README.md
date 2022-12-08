@@ -1,5 +1,9 @@
 # Devcode node.js starter with express.js
 
+## Hasil akhir yang diharapkan
+
+Peserta dapat submit challenge di devcode menggunakan docker.
+
 ## Tools yang di perlukan
 
 - Git
@@ -19,6 +23,8 @@
 - express.js
 - morgan
 - nodemon
+
+# Instruksi pengerjaan
 
 ## Menjalankan projek
 
