@@ -28,25 +28,7 @@ app.post('/contacts', async (req, res) => {
     // get data from request body
     const { full_name, phone_number, email } = req.body;
 
-    if (!full_name || !phone_number || !email) {
-        return res.status(400).json({
-            status: 'Failed',
-            message: 'full_name, phone_number, and email is required',
-        });
-    }
-
-    // check if data is exist
-    const [check] = await db.query(
-        `select * from contacts where email = ? and full_name = ? and phone_number = ?`,
-        [email, full_name, phone_number]
-    );
-
-    if (check.length) {
-        return res.status(400).json({
-            status: 'Failed',
-            message: 'full_name, phone_number, and email is duplicate',
-        });
-    }
+    // TODO: validasi data terlebih dahulu sebelum data disimpan ke dalam database
 
     // insert data into contacts table
     const [rows] = await db.query(
@@ -71,21 +53,7 @@ app.put('/contacts/:id', async (req, res) => {
     const { id } = req.params;
     const body = req.body;
 
-    // check if body request empty
-    if (Object.keys(body).length === 0) {
-        return res.status(400).json({
-            status: 'Failed',
-            message: 'no contact updated',
-        });
-    }
-
-    const [check] = await db.query(`SELECT * FROM contacts where id = ?`, [id]);
-    if (!check.length) {
-        return res.status(400).json({
-            status: 'Failed',
-            message: `Contact with id ${id} is not found`,
-        });
-    }
+    // TODO: validasi data terlebih dahulu sebelum mengedit data yang ada dalam database
 
     let query = ``;
     const values = [];
@@ -121,13 +89,7 @@ app.put('/contacts/:id', async (req, res) => {
 app.delete('/contacts/:id', async (req, res) => {
     const { id } = req.params;
 
-    const [check] = await db.query(`SELECT * FROM contacts where id = ?`, [id]);
-    if (!check.length) {
-        return res.status(400).json({
-            status: 'Failed',
-            message: `Contact with id ${id} is not found`,
-        });
-    }
+    // TODO: validasi data terlebih dahulu sebelum mengahapus data yang ada dalam database
 
     await db.query(`DELETE FROM contacts where id = ?`, [id]);
 
