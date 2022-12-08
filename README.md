@@ -2,7 +2,7 @@
 
 ## Hasil akhir yang diharapkan
 
-Peserta dapat membuat dan menampilkan data kontak.
+Peserta dapat membuat dan menampilkan data kontak yang dengan variabel lokal.
 
 ## Instruksi pengerjaan
 
