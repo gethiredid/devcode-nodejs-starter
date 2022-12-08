@@ -6,7 +6,7 @@ Peserta dapat mengubah dan menghapus data kontak yang terhubung dengan database.
 
 ## Instruksi pengerjaan
 
-Terdapat 2 route pada file `app.js` yaitu :
+Terdapat 4 route pada file `app.js` yaitu :
 
 - GET `/contacts`
 - POST `/contacts`
