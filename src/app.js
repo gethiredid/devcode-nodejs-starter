@@ -18,7 +18,9 @@ app.get('/hello', (req, res) => {
 
 // get all contacts
 app.get('/contacts', (req, res) => {
-    res.json({ status: 'Success', data: CONTACTS });
+    // TODO: ambil semua data kontak dari variabel CONTACTS
+
+    res.json({ status: 'Success', data: [] });
 });
 
 // create contact
@@ -26,13 +28,9 @@ app.post('/contacts', (req, res) => {
     // get data from request body
     const { full_name, phone_number, email } = req.body;
 
-    // create new data object
-    const newData = { id: CONTACTS.length + 1, full_name, phone_number, email };
+    // TODO: simpan data dari request body kedalam variabel CONTACTS
 
-    // push new data to contacts
-    CONTACTS.push(newData);
-    
-    res.json({ status: 'Success', message: 'Contact created', data: newData });
+    res.json({ status: 'Success', message: 'Contact created', data: {} });
 });
 
 // 404 endpoint middleware
