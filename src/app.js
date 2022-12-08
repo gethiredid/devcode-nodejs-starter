@@ -19,8 +19,11 @@ app.get('/hello', (req, res) => {
 // get all contacts
 app.get('/contacts', async (req, res) => {
     // query for getting all data from contacts table
-    const [rows] = await db.query(`SELECT * FROM contacts`);
-    res.json({ status: 'Success', data: rows });
+
+    // TODO: ambil semua data kontak dari database
+    const [rows] = await db.query(`SELECT email FROM contacts`);
+
+    res.json({ status: 'Success', data: [] });
 });
 
 // create contact
@@ -28,21 +31,12 @@ app.post('/contacts', async (req, res) => {
     // get data from request body
     const { full_name, phone_number, email } = req.body;
 
-    // insert data into contacts table
-    const [rows] = await db.query(
-        `INSERT INTO contacts(full_name, phone_number, email) values(?,?,?)`,
-        [full_name, phone_number, email]
-    );
+    // TODO: simpan data dari request body kedalam database
 
     res.json({
         status: 'Success',
         message: 'Contact created',
-        data: {
-            id: rows.insertId,
-            full_name,
-            phone_number,
-            email,
-        },
+        data: {},
     });
 });
 
