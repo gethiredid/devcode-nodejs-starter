@@ -25,23 +25,10 @@ app.get('/contacts', async (req, res) => {
 
 // create contact
 app.post('/contacts', async (req, res) => {
-    // get data from request body
-    const { full_name, phone_number, email } = req.body;
-
-    // insert data into contacts table
-    const [rows] = await db.query(
-        `INSERT INTO contacts(full_name, phone_number, email) values(?,?,?)`,
-        [full_name, phone_number, email]
-    );
-
     res.json({
         status: 'Success',
         message: 'Contact created',
         data: {
-            id: rows.insertId,
-            full_name,
-            phone_number,
-            email,
         },
     });
 });
