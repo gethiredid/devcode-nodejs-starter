@@ -1,4 +1,4 @@
-# Devcode node.js starter with express.js - Level 3
+# Devcode node.js starter with express.js and database
 
 ## Tools yang di perlukan
 
