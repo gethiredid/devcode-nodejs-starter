@@ -51,55 +51,27 @@ app.put('/contacts/:id', async (req, res) => {
     const { id } = req.params;
     const body = req.body;
 
-    // check if body request empty
-    if (Object.keys(body).length === 0) {
-        return res.json({
-            message: 'no contact updated',
-        });
-    }
-
-    let query = ``;
-    const values = [];
-
-    // create query based on existing column(full_name, email, phone_number)
-    for (const col in body) {
-        if (!query.length) {
-            query += `UPDATE contacts set ${col} = ?`;
-        } else {
-            query += `, ${col} = ? `;
-        }
-        values.push(body[col]);
-    }
-
-    // add where query 
-    query += `where id = ?`;
-    values.push(id);
-
-    // run query
-    await db.query(query, values);
+    // TODO: edit data (full_name/email/phone_number) pada database berdasarkan id nya
 
     res.json({
         status: 'Success',
         message: 'Contact updated',
-        data: {
-            id: +id,
-            ...body
-        }
+        data: {},
     });
-})
+});
 
 // delete contact
 app.delete('/contacts/:id', async (req, res) => {
     const { id } = req.params;
 
-    await db.query(`DELETE FROM contacts where id = ?`, [id]);
+    // TODO: hapus data pada database berdasarkan id nya
 
     res.json({
         status: 'Success',
         message: 'Contact deleted',
-        deletedId: +id,
+        deletedId: null,
     });
-})
+});
 
 // 404 endpoint middleware
 app.all('*', (req, res) => {

@@ -1,4 +1,22 @@
-# Devcode node.js starter with express.js - Level 3
+# Devcode node.js starter with express.js - Level 4
+
+## Hasil akhir yang diharapkan
+
+Peserta dapat mengubah dan menghapus data kontak yang terhubung dengan database.
+
+## Instruksi pengerjaan
+
+Terdapat 2 route pada file `app.js` yaitu :
+
+- GET `/contacts`
+- POST `/contacts`
+- PUT `/contacts/{id}`
+- DELETE `/contacts/{id}`
+
+Anda dapat mengubah kedua route tersebut agar request dan response sesuai dengan [dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN) pada postman.
+
+Pastikan juga semua test berhasil ketika menjalankan unit testing lokal.
+
 
 ## Tools yang di perlukan
 
