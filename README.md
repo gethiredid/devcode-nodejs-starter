@@ -6,7 +6,7 @@ Peserta dapat memvalidasi data dari request body sebelum data tersebut disimpan 
 
 ## Instruksi pengerjaan
 
-Terdapat 2 route pada file `app.js` yaitu :
+Terdapat 4 route pada file `app.js` yaitu :
 
 -   GET `/contacts`
 -   POST `/contacts`
