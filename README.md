@@ -74,8 +74,8 @@ Jalankan perintah berikut untuk melakukan unit testing:
 docker run --network="host" -e API_URL=http://localhost:3030 -e LEVEL={level} alfi08/hello-unit-testing
 ```
 
-## Upload projek ke docker hub
-### Build docker image
+# Submit ke Devcode
+## Build docker image
 Jalankan perintah berikut untuk Build docker image  `docker build . -t {name}`
 
 contoh :
@@ -83,7 +83,7 @@ contoh :
 docker build . -t devcode-nodejs
 ```
 
-# Submit ke Devcode
+
 ## Push projek ke docker hub
 
 Pastikan sudah memiliki akun docker hub, dan login akun docker anda di lokal dengan perintah `docker login`.
