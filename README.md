@@ -24,7 +24,6 @@ Peserta dapat submit challenge di devcode menggunakan docker.
 - morgan
 - nodemon
 
-# Instruksi pengerjaan
 
 ## Menjalankan projek
 
