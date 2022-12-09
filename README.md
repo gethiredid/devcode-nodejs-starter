@@ -4,6 +4,10 @@
 
 Peserta dapat submit challenge di devcode menggunakan docker.
 
+## Instruksi pengerjaan
+
+Pastikan anda sudah menginstall Tools yang diperlukan. Kemudian coba jalankan projek, setelah projek jalan anda bisa mentesting projek secara lokal menggunakan docker. Pastikan semua test case berhasil dijalankan tanpa error, setelah itu anda bisa push projek ke docker hub. Kemudian submit ke Devcode dengan image docker yang telah di push ke docker hub.
+
 ## Tools yang di perlukan
 
 - Git
