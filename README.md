@@ -10,8 +10,8 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 2. Extract source code yang sudah terdownload pada perangkat anda
 3. Buka source code yang sudah diextract menggunakan Code Editor, contoh Visual Studio Code
 4. Salin isi dari file `.env.example` ke dalam file `.env`
-5. Jalankan `npm install` pada terminal
-6. Jalankan `npm run dev` pada terminal
+5. Jalankan`npm install` pada terminal
+6. Jalankan`npm start` atau `npm run dev` untuk mode development pada terminal
 
 ## Instruksi pengerjaan
 
@@ -22,11 +22,11 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 
 ## Tools dan Packages yang digunakan
 
-1. Git
-2. Docker
-3. Express.js
-4. nodemon
-5. Morgan
+1. [Git](https://git-scm.com)
+2. [Docker](https://www.docker.com)
+3. [Express.js](https://expressjs.com)
+4. [nodemon](https://nodemon.io)
+5. [Morgan](https://www.npmjs.com/package/morgan)
 
 ## Menginstal Tools yang diperlukan
 
