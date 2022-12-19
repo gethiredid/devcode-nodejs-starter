@@ -13,14 +13,14 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 5. Jalankan`npm install` pada terminal
 6. Jalankan`npm start` atau `npm run dev` untuk mode development pada terminal
 
-## Instruksi pengerjaan
+## Instruksi Pengerjaan
 
 1. Pastikan anda sudah meng-install tools yang diperlukan. Jika belum, silahkan ikuti langkah-langkahnya [disini](#menginstal-tools-yang-diperlukan)
 2. Lakukan unit testing pada local anda dengan menggunakan Docker, langkah-langkahnya dapat dilihat [disini](#menjalankan-unit-testing-dengan-Docker)
 3. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 4. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 
-## Tools dan Packages yang digunakan
+## Tools dan Packages yang Digunakan
 
 1. [Git](https://git-scm.com)
 2. [Docker](https://www.docker.com)
@@ -28,7 +28,7 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 4. [nodemon](https://nodemon.io)
 5. [Morgan](https://www.npmjs.com/package/morgan)
 
-## Menginstal Tools yang digunakan
+## Menginstal Tools yang Digunakan
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 -   Docker
