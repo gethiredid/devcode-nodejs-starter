@@ -2,7 +2,7 @@
 
 ## Hasil Akhir yang Diharapkan
 
-Peserta dapat menampilkan message hello world dalam format JSON pada url http://localhost:3030/hello dan submit challenge di devcode menggunakan docker
+Peserta dapat menampilkan message hello world dalam format JSON pada url http://localhost:3030/hello dan submit challenge di Devcode menggunakan Docker
 
 ## Setup Environment
 
@@ -28,7 +28,7 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 4. [nodemon](https://nodemon.io)
 5. [Morgan](https://www.npmjs.com/package/morgan)
 
-## Menginstal Tools yang diperlukan
+## Menginstal Tools yang digunakan
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 -   Docker
@@ -36,9 +36,9 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
     -   [Mac](https://docs.docker.com/desktop/install/mac-install/)
     -   [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
-## Menjalankan unit testing dengan Docker
+## Menjalankan Unit Testing dengan Docker
 
-### Build docker image
+### Build Docker Image
 
 Jalankan perintah berikut untuk Build docker image `docker build . -t {name}`
 
@@ -48,7 +48,7 @@ contoh :
 docker build . -t nodejs-hello
 ```
 
-### Jalankan docker image
+### Jalankan Docker Image
 
 Jalankan docker image dengan perintah `docker run -e PORT=3030 -p 3030:3030 {docker image}`
 
@@ -68,9 +68,9 @@ Jalankan perintah berikut untuk menjalankan unit testing di local:
 docker run --network="host" -e API_URL=http://localhost:3030 -e LEVEL=1 alfi08/hello-unit-testing
 ```
 
-## Submit Image Docker ke Devcode
+## Submit Docker Image ke Devcode
 
-### Build docker image
+### Build Docker Image
 
 Jalankan perintah berikut untuk Build docker image `docker build . -t {name}`
 
