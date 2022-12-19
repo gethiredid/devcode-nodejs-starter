@@ -2,7 +2,7 @@
 
 ## Hasil Akhir yang Diharapkan
 
-Peserta dapat menampilkan message hello world dalam format JSON pada url http://localhost:3030/hello dan submit challenge di devcode menggunakan docker.
+Peserta dapat menampilkan message hello world dalam format JSON pada url http://localhost:3030/hello dan submit challenge di devcode menggunakan docker
 
 ## Setup Environment
 
