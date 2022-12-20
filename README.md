@@ -17,9 +17,10 @@ Peserta dapat memvalidasi data dari request body sebelum data tersebut disimpan 
 ## Instruksi Pengerjaan
 
 1. Pastikan anda sudah meng-install tools yang diperlukan. Jika belum, silahkan ikuti langkah-langkahnya [disini](#menginstal-tools-yang-digunakan)
-2. Tambahkan validasi pada data yang akan dijadikan request body di route POST, PUT, DELETE pada file `app.js`, untuk detail requirement validasinya dapat dilihat [disini](#detail-validasi-untuk-request-payload)
-3. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
-4. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
+2. Jalankan API dan Database dengan Docker, silahkan ikuti langkah-langkahnya [disini](#menjalankan-api-dan-database-dengan-docker)
+3. Tambahkan validasi pada data yang akan dijadikan request body di route POST, PUT, DELETE pada file `app.js`, untuk detail requirement validasinya dapat dilihat [disini](#detail-validasi-untuk-request-payload)
+4. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
+5. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 
 Untuk melihat contoh dari validasi API-nya, anda dapat mengakses [Dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN#intro)
 
