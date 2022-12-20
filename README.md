@@ -21,7 +21,7 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 4. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 5. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 
-## Tools dan Packages yang Digunakan
+## Teknologi yang Digunakan
 
 1. [Git](https://git-scm.com)
 2. [Node.js](https://nodejs.org/en/about/)
@@ -30,7 +30,7 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 5. [nodemon](https://nodemon.io)
 6. [Morgan](https://www.npmjs.com/package/morgan)
 
-## Teknologi yang Digunakan
+## Menginstal Tools yang Digunakan
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 -   Docker
