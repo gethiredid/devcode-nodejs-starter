@@ -30,7 +30,7 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 5. [nodemon](https://nodemon.io)
 6. [Morgan](https://www.npmjs.com/package/morgan)
 
-## Menginstal Tools yang Digunakan
+## Teknologi yang Digunakan
 
 -   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 -   Docker
