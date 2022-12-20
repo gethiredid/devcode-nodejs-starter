@@ -59,7 +59,7 @@ Contoh ketika ingin membuat 2 tabel:
 ```
 await db.query(
         `
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS contact (
         id int not null auto_increment,
         email varchar(255) not null,
         password varchar(255) not null,
