@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.get('/hello', (req, res) => {
-    res.json({ message: 'Hello world' });
-});
+// app.get('/hello', (req, res) => {
+//     res.json({ message: 'Hello world' });
+// });
 
 // 404 endpoint middleware
 app.all('*', (req, res) => {

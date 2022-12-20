@@ -16,17 +16,19 @@ Peserta dapat menampilkan message hello world dalam format JSON pada url http://
 ## Instruksi Pengerjaan
 
 1. Pastikan anda sudah meng-install tools yang diperlukan. Jika belum, silahkan ikuti langkah-langkahnya [disini](#menginstal-tools-yang-diperlukan)
-2. Lakukan unit testing pada local anda dengan menggunakan Docker, langkah-langkahnya dapat dilihat [disini](#menjalankan-unit-testing-dengan-Docker)
-3. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
-4. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
+2. Uncomment baris kode yang terdapat pada file`src/app.js`
+3. Lakukan unit testing pada local anda dengan menggunakan Docker, langkah-langkahnya dapat dilihat [disini](#menjalankan-unit-testing-dengan-Docker)
+4. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
+5. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 
 ## Tools dan Packages yang Digunakan
 
 1. [Git](https://git-scm.com)
-2. [Docker](https://www.docker.com)
-3. [Express.js](https://expressjs.com)
-4. [nodemon](https://nodemon.io)
-5. [Morgan](https://www.npmjs.com/package/morgan)
+2. [Node.js](https://nodejs.org/en/about/)
+3. [Docker](https://www.docker.com)
+4. [Express.js](https://expressjs.com)
+5. [nodemon](https://nodemon.io)
+6. [Morgan](https://www.npmjs.com/package/morgan)
 
 ## Menginstal Tools yang Digunakan
 
