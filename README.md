@@ -22,7 +22,7 @@ Peserta dapat membuat dan menampilkan data kontak dengan menggunakan local varia
 5. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 6. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 
-## Tools dan Packages yang Digunakan
+## Teknologi yang Digunakan
 
 1. [Git](https://git-scm.com)
 2. [Node.js](https://nodejs.org/en/about/)
