@@ -10,8 +10,9 @@ Peserta dapat mengubah dan menghapus data kontak yang terhubung dengan database
 2. Extract source code yang sudah terdownload pada perangkat anda
 3. Buka source code yang sudah diextract menggunakan Code Editor, contoh Visual Studio Code
 4. Salin isi dari file `.env.example` ke dalam file `.env`
-5. Jalankan`npm install` pada terminal
-6. Jalankan`npm start` atau `npm run dev` untuk mode development pada terminal
+5. Lakukan migrasi database dengan mengikuti langkah-langkahnya yang bisa dilihat [disini](#migrasi-database)
+6. Jalankan`npm install` pada terminal
+7. Jalankan`npm start` atau `npm run dev` untuk mode development pada terminal
 
 ## Instruksi Pengerjaan
 
