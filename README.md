@@ -1,67 +1,66 @@
-# Devcode node.js starter with express.js - Level 2
+# Devcode Starter using Node.js and Express.js Level 2
 
-## Hasil akhir yang diharapkan
+## Hasil Akhir yang Diharapkan
 
-Peserta dapat membuat dan menampilkan data kontak yang dengan variabel lokal.
+Peserta dapat membuat dan menampilkan data kontak dengan menggunakan local variable
 
-## Instruksi pengerjaan
+## Setup Environment
 
-Terdapat 2 route pada file `app.js` yaitu :
+1. Download source code melalui link yang telah disediakan dari halaman assesment
+2. Extract source code yang sudah terdownload pada perangkat anda
+3. Buka source code yang sudah diextract menggunakan Code Editor, contoh Visual Studio Code
+4. Salin isi dari file `.env.example` ke dalam file `.env`
+5. Jalankan`npm install` pada terminal
+6. Jalankan`npm start` atau `npm run dev` untuk mode development pada terminal
 
-- GET `/contacts`
-- POST `/contacts`
+## Instruksi Pengerjaan
 
-Anda dapat mengubah route tersebut agar request dan response sesuai dengan [dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN) pada postman.
+1. Pastikan anda sudah meng-install tools yang diperlukan. Jika belum, silahkan ikuti langkah-langkahnya [disini](#menginstal-tools-yang-diperlukan)
+2. Sesuaikan request dan response pada route GET `/contacts` pada file `app.js` sesuai dengan [Dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN) pada Postman
+3. Sesuaikan request dan response pada route POST `/contacts` pada file `app.js` sesuai dengan [Dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN) pada Postman
+4. Lakukan unit testing pada local anda dengan menggunakan Docker, langkah-langkahnya dapat dilihat [disini](#menjalankan-unit-testing-dengan-Docker)
+5. Push projek ke docker hub setelah semua test case berhasil dijalankan, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
+6. Submit image docker yang telah dipush ke Docker Hub ke Halaman Submission Devcode, langkah-langkahnya dapat dilihat [disini](#push-projek-ke-docker-hub)
 
-Pastikan juga semua test berhasil ketika menjalankan unit testing lokal.
+## Tools dan Packages yang Digunakan
 
-## Tools yang di perlukan
+1. [Git](https://git-scm.com)
+2. [Docker](https://www.docker.com)
+3. [Express.js](https://expressjs.com)
+4. [nodemon](https://nodemon.io)
+5. [Morgan](https://www.npmjs.com/package/morgan)
 
-- Git
-- Docker 
+## Menginstal Tools yang Digunakan
 
-### Cara menginstall Tools
+-   [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+-   Docker
+    -   [Windows](https://docs.docker.com/desktop/install/windows-install/)
+    -   [Mac](https://docs.docker.com/desktop/install/mac-install/)
+    -   [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
-- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+## Menjalankan Unit Testing dengan Docker
 
-- Docker : 
-    - [Windows](https://docs.docker.com/desktop/install/windows-install/)
-    - [Mac](https://docs.docker.com/desktop/install/mac-install/)
-    - [Linux](https://docs.docker.com/desktop/install/linux-install/)
+### Build Docker Image
 
-## Packages yang digunakan
-
-- express.js
-- morgan
-- nodemon
-
-## Menjalankan projek
-
-- copy `.env.example` to `.env`
-- install package `npm install`
-- jalankan projek dengan perintah `npm start` atau `npm run dev` untuk mode development
-
-# Menjalankan unit testing dengan docker
-
-Pastikan docker sudah terinstall di komputer anda. Jika belum silahkan install terlebih dahulu mengikuti instruksi dari tutorial diatas.
-
-## Build docker image
-Jalankan perintah berikut untuk Build docker image  `docker build . -t {name}`
+Jalankan perintah berikut untuk Build docker image `docker build . -t {name}`
 
 contoh :
+
 ```
 docker build . -t nodejs-hello
 ```
 
-## Jalankan docker image
+### Jalankan Docker Image
+
 Jalankan docker image dengan perintah `docker run -e PORT=3030 -p 3030:3030 {docker image}`
 
-contoh: 
+contoh:
+
 ```
 docker run -e PORT=3030 -p 3030:3030 nodejs-hello
 ```
 
-## Jalankan unit testing
+### Jalankan Unit Testing
 
 Pastikan port ketika menjalankan docker image sama dengan `API_URL` ketika ingin menjalankan unit testing.
 
@@ -71,18 +70,20 @@ Jalankan perintah berikut untuk menjalankan unit testing di local:
 docker run --network="host" -e API_URL=http://localhost:3030 -e LEVEL=1 alfi08/hello-unit-testing
 ```
 
+## Submit Docker Image ke Devcode
 
+### Build Docker Image
 
-# Submit ke Devcode
-## Build docker image
-Jalankan perintah berikut untuk Build docker image  `docker build . -t {name}`
+Jalankan perintah berikut untuk Build docker image `docker build . -t {name}`
 
-contoh :
+Contoh :
+
 ```
 docker build . -t nodejs-hello
 ```
 
-## Push projek ke docker hub
+### Push projek ke Docker Hub
+
 Pastikan sudah memiliki akun docker hub, dan login akun docker anda di lokal dengan perintah `docker login`.
 
 Setelah itu jalankan perintah berikut untuk push docker image lokal ke docker hub.
