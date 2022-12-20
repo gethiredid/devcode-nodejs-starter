@@ -15,7 +15,7 @@ Peserta dapat membuat dan menampilkan data kontak dengan menggunakan local varia
 
 ## Instruksi Pengerjaan
 
-1. Pastikan anda sudah meng-install tools yang diperlukan. Jika belum, silahkan ikuti langkah-langkahnya [disini](#menginstal-tools-yang-diperlukan)
+1. Pastikan anda sudah meng-install tools yang diperlukan. Jika belum, silahkan ikuti langkah-langkahnya [disini](#menginstal-tools-yang-digunakan)
 2. Sesuaikan request dan response pada route GET `/contacts` pada file `app.js` sesuai dengan [Dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN) pada Postman
 3. Sesuaikan request dan response pada route POST `/contacts` pada file `app.js` sesuai dengan [Dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN) pada Postman
 4. Lakukan unit testing pada local anda dengan menggunakan Docker, langkah-langkahnya dapat dilihat [disini](#menjalankan-unit-testing-dengan-Docker)
@@ -25,10 +25,11 @@ Peserta dapat membuat dan menampilkan data kontak dengan menggunakan local varia
 ## Tools dan Packages yang Digunakan
 
 1. [Git](https://git-scm.com)
-2. [Docker](https://www.docker.com)
-3. [Express.js](https://expressjs.com)
-4. [nodemon](https://nodemon.io)
-5. [Morgan](https://www.npmjs.com/package/morgan)
+2. [Node.js](https://nodejs.org/en/about/)
+3. [Docker](https://www.docker.com)
+4. [Express.js](https://expressjs.com)
+5. [nodemon](https://nodemon.io)
+6. [Morgan](https://www.npmjs.com/package/morgan)
 
 ## Menginstal Tools yang Digunakan
 
