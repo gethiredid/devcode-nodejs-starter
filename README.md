@@ -24,7 +24,7 @@ Peserta dapat memvalidasi data dari request body sebelum data tersebut disimpan 
 
 Untuk melihat contoh dari validasi API-nya, anda dapat mengakses [Dokumentasi API](https://documenter.getpostman.com/view/6584319/2s8Yt1rUtN#intro)
 
-## Tools dan Packages yang Digunakan
+## Teknologi yang Digunakan
 
 1. [Git](https://git-scm.com)
 2. [Node.js](https://nodejs.org/en/about/)
