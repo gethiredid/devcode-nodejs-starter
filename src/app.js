@@ -11,7 +11,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// routes
+// TODO: Uncomment baris kode dibawah ini
 // app.get('/hello', (req, res) => {
 //     res.json({ message: 'Hello world' });
 // });
