@@ -11,10 +11,10 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// routes
-app.get('/hello', (req, res) => {
-    res.json({ message: 'Hello world' });
-});
+// TODO: Uncomment baris kode dibawah ini
+// app.get('/hello', (req, res) => {
+//     res.json({ message: 'Hello world' });
+// });
 
 // 404 endpoint middleware
 app.all('*', (req, res) => {
