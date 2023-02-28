@@ -1,6 +1,6 @@
 const mysql = require('mysql2/promise');
 
-// koneksi ke database
+// koneksi ke database mysql
 const db = mysql.createPool({
     host: process.env.MYSQL_HOST || 'localhost',
     user: process.env.MYSQL_USER || 'root',
@@ -11,7 +11,7 @@ const db = mysql.createPool({
     queueLimit: 0,
 });
 
-// migrasi database
+// migrasi database mysql
 const migration = async () => {
     try {
          // query mysql untuk membuat table contacts
@@ -32,4 +32,24 @@ const migration = async () => {
     }
 };
 
-module.exports = { db, migration };
+// TODO: Lengkapi fungsi dibawah ini untuk mengambil data didalam database
+const find = async () => {
+
+}
+
+// TODO: Lengkapi fungsi dibawah ini untuk menyimpan data kedalam database
+const create = async (data) => {
+
+}
+
+// TODO: Lengkapi fungsi dibawah ini untuk mengedit data didalam database
+const update = async (id, data) => {
+
+}
+
+// TODO: Lengkapi fungsi dibawah ini untuk menghapus data didalam database
+const destroy = async (id) => {
+
+}
+
+module.exports = { migration, find, create, update, destroy };
