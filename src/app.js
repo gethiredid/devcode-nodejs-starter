@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const { migration, db } = require('./db');
+const db = require('./db');
 
 const port = process.env.PORT || 3030;
 const host = process.env.HOST || 'localhost';
@@ -18,31 +18,23 @@ app.get('/hello', (req, res) => {
 
 // get all contacts
 app.get('/contacts', async (req, res) => {
-    // query for getting all data from contacts table
-    const [rows] = await db.query(`SELECT * FROM contacts`);
-    res.json({ status: 'Success', data: rows });
+    // TODO: ambil semua data kontak dari database
+    const data = await db.find();
+
+    res.json({ status: 'Success', data: data });
 });
 
 // create contact
 app.post('/contacts', async (req, res) => {
-    // get data from request body
-    const { full_name, phone_number, email } = req.body;
+    const body = req.body;
 
-    // insert data into contacts table
-    const [rows] = await db.query(
-        `INSERT INTO contacts(full_name, phone_number, email) values(?,?,?)`,
-        [full_name, phone_number, email]
-    );
+    // TODO: simpan data dari request body kedalam database
+    const data = await db.create(body);
 
     res.json({
         status: 'Success',
         message: 'Contact created',
-        data: {
-            id: +rows.insertId,
-            full_name,
-            phone_number,
-            email,
-        },
+        data: data,
     });
 });
 
@@ -52,11 +44,12 @@ app.put('/contacts/:id', async (req, res) => {
     const body = req.body;
 
     // TODO: edit data (full_name/email/phone_number) pada database berdasarkan id nya
+    const data = await db.update(id, body);
 
     res.json({
         status: 'Success',
         message: 'Contact updated',
-        data: {},
+        data: data,
     });
 });
 
@@ -65,11 +58,12 @@ app.delete('/contacts/:id', async (req, res) => {
     const { id } = req.params;
 
     // TODO: hapus data pada database berdasarkan id nya
+    const deletedId = await db.destroy(id)
 
     res.json({
         status: 'Success',
         message: 'Contact deleted',
-        deletedId: null,
+        deletedId: deletedId,
     });
 });
 
@@ -90,7 +84,7 @@ app.use((err, req, res, next) => {
 });
 
 const run = async () => {
-    await migration(); // 👈 running migration before server
+    await db.migration(); // 👈 running migration before server
     app.listen(port); // running server
     console.log(`Server run on http://${host}:${port}/`);
 };
