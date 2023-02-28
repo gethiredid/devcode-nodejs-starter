@@ -52,30 +52,88 @@ Apabila ada perubahan pada file kodingan anda, anda bisa build ulang container d
 docker-compose up -d --force-recreate
 ```
 
+## Koneksi Database
+
+Anda bebas menggunakan libary apapun untuk membuat koneksi pada database.
+
+### Mysql
+
+Contoh koneksi database Mysql menggunakan libary [mysql2](https://www.npmjs.com/package/mysql2).
+
+```
+const mysql = require('mysql2/promise');
+
+const db = mysql.createPool({
+    host: process.env.MYSQL_HOST || 'localhost',
+    user: process.env.MYSQL_USER || 'root',
+    database: process.env.MYSQL_DBNAME || 'hello',
+    password: process.env.MYSQL_PASSWORD || 'root',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+});
+```
+
+### Posgresql
+
+Contoh koneksi database Mysql menggunakan libary [pg](https://www.npmjs.com/package/pg).
+
+```
+const pg = require('pg');
+const db = new pg.Pool({
+    host: process.env.PGSQL_HOST,
+    user: process.env.PGSQL_USER,
+    password: process.env.PGSQL_PASSWORD,
+    database: process.env.PGSQL_DBNAME,
+    port: process.env.PGSQL_PORT,
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 2000,
+});
+```
+
+### Mongodb
+
+Contoh koneksi database Mysql menggunakan libary [mongodb](https://www.npmjs.com/package/mongodb).
+
+```
+const {MongoClient} = require('mongodb');
+const mongoURI = `mongodb:127.0.0.1`;
+const client = new MongoClient(mongoURI);
+```
+
 ## Migrasi Database
 
 Migrasi table berada pada fungsi `migration` di file `db.js`, fungsi migration dijalankan didalam fungsi `run` yang berada pada `app.js`. Anda bisa menyesuaikan fungsi `migration` dalam file `db.js` sesuai struktur data pada tabel yang ingin dibuat.
 
-Contoh ketika ingin membuat 2 tabel:
+Contoh ketika ingin membuat migrasi sebuah tabel:
+
+1. Mysql
 
 ```
 await db.query(
         `
         CREATE TABLE IF NOT EXISTS contact (
-        id int not null auto_increment,
-        email varchar(255) not null,
-        password varchar(255) not null,
-        primary key (id)
+            id int not null auto_increment,
+            email varchar(255) not null,
+            password varchar(255) not null,
+            primary key (id)
         )
     `
 );
+```
 
+2. Postgresql
+
+```
 await db.query(
         `
-        CREATE TABLE IF NOT EXISTS city (
-        id int not null auto_increment,
-        city_name varchar(255) not null,
-        primary key (id)
+        CREATE TABLE IF NOT EXISTS contacts (
+            id SERIAL,
+            full_name varchar(255) not null,
+            phone_number varchar(255) not null,
+            email varchar(255) not null,
+            primary key (id)
         )
     `
 );
