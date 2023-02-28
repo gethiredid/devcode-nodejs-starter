@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const { migration, db } = require('./db');
+const db = require('./db');
+const { validateBody, validateBody, validateData, isDataDuplicated } = require('./validator');
 
 const port = process.env.PORT || 3030;
 const host = process.env.HOST || 'localhost';
@@ -18,33 +19,41 @@ app.get('/hello', (req, res) => {
 
 // get all contacts
 app.get('/contacts', async (req, res) => {
-    // query for getting all data from contacts table
-    const [rows] = await db.query(`SELECT * FROM contacts`);
-    res.json({ status: 'Success', data: rows });
+    // TODO: ambil semua data kontak dari database
+    const data = await db.find();
+
+    res.json({ status: 'Success', data: data });
 });
 
 // create contact
 app.post('/contacts', async (req, res) => {
-    // get data from request body
-    const { full_name, phone_number, email } = req.body;
+    const body = req.body;
 
-    // TODO: validasi data terlebih dahulu sebelum data disimpan ke dalam database
+    // TODO: validasi body request
+    const validateBody = validateData(body)
+    if (validateBody) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: 'full_name, phone_number, and email is required',
+        });
+    }
 
-    // insert data into contacts table
-    const [rows] = await db.query(
-        `INSERT INTO contacts(full_name, phone_number, email) values(?,?,?)`,
-        [full_name, phone_number, email]
-    );
+    // TODO: validasi data agar tidak terjadi duplikasi pada data
+    const isDuplicated = isDataDuplicated(body)
+    if (isDuplicated) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: 'full_name, phone_number, and email is duplicate',
+        });
+    }
+
+    // TODO: simpan data dari request body kedalam database
+    const data = await db.create(body);
 
     res.json({
         status: 'Success',
         message: 'Contact created',
-        data: {
-            id: +rows.insertId,
-            full_name,
-            phone_number,
-            email,
-        },
+        data: data,
     });
 });
 
@@ -53,35 +62,31 @@ app.put('/contacts/:id', async (req, res) => {
     const { id } = req.params;
     const body = req.body;
 
-    // TODO: validasi data terlebih dahulu sebelum mengedit data yang ada dalam database
-
-    let query = ``;
-    const values = [];
-
-    // create query based on existing column(full_name, email, phone_number)
-    for (const col in body) {
-        if (!query.length) {
-            query += `UPDATE contacts set ${col} = ?`;
-        } else {
-            query += `, ${col} = ? `;
-        }
-        values.push(body[col]);
+    // TODO: validasi body request
+    const validateBody = validateData(body)
+    if (validateBody) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: 'no contact updated',
+        });
     }
 
-    // add where query
-    query += `where id = ?`;
-    values.push(id);
+    // TODO: validasi id kontak
+    const isExist = await db.findOne(id);
+    if (!isExist) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: `Contact with id ${id} is not found`,
+        });
+    }
 
-    // run query
-    await db.query(query, values);
+    // TODO: edit data (full_name/email/phone_number) pada database berdasarkan id nya
+    const data = await db.update(id, body);
 
     res.json({
         status: 'Success',
         message: 'Contact updated',
-        data: {
-            id: +id,
-            ...body,
-        },
+        data: data,
     });
 });
 
@@ -89,14 +94,22 @@ app.put('/contacts/:id', async (req, res) => {
 app.delete('/contacts/:id', async (req, res) => {
     const { id } = req.params;
 
-    // TODO: validasi data terlebih dahulu sebelum mengahapus data yang ada dalam database
+    // TODO: validasi id kontak
+    const isExist = await db.findOne(id);
+    if (!isExist) {
+        return res.status(400).json({
+            status: 'Failed',
+            message: `Contact with id ${id} is not found`,
+        });
+    }
 
-    await db.query(`DELETE FROM contacts where id = ?`, [id]);
+    // TODO: hapus data pada database berdasarkan id nya
+    const deletedId = await db.destroy(id)
 
     res.json({
         status: 'Success',
         message: 'Contact deleted',
-        deletedId: +id,
+        deletedId: deletedId,
     });
 });
 
