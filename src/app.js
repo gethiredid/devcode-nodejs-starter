@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const { migration, db } = require('./db');
+const db = require('./db');
 
 const port = process.env.PORT || 3030;
 const host = process.env.HOST || 'localhost';
@@ -18,25 +18,23 @@ app.get('/hello', (req, res) => {
 
 // get all contacts
 app.get('/contacts', async (req, res) => {
-    // query for getting all data from contacts table
-
     // TODO: ambil semua data kontak dari database
-    const [rows] = await db.query(`SELECT email FROM contacts`);
+    const data = await db.find();
 
-    res.json({ status: 'Success', data: [] });
+    res.json({ status: 'Success', data: data });
 });
 
 // create contact
 app.post('/contacts', async (req, res) => {
-    // get data from request body
-    const { full_name, phone_number, email } = req.body;
+    const body = req.body;
 
     // TODO: simpan data dari request body kedalam database
+    const data = await db.create(body);
 
     res.json({
         status: 'Success',
         message: 'Contact created',
-        data: {},
+        data: data,
     });
 });
 
@@ -57,7 +55,7 @@ app.use((err, req, res, next) => {
 });
 
 const run = async () => {
-    await migration(); // 👈 running migration before server
+    await db.migration(); // 👈 running migration before server
     app.listen(port); // running server
     console.log(`Server run on http://${host}:${port}/`);
 };
