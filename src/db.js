@@ -37,6 +37,11 @@ const find = async () => {
 
 }
 
+// TODO: Lengkapi fungsi dibawah ini untuk mengambil satu data didalam database
+const findOne = async (id) => {
+
+}
+
 // TODO: Lengkapi fungsi dibawah ini untuk menyimpan data kedalam database
 const create = async (data) => {
 
@@ -52,4 +57,4 @@ const destroy = async (id) => {
 
 }
 
-module.exports = { migration, find, create, update, destroy };
+module.exports = { migration, find, create, update, destroy, findOne };
