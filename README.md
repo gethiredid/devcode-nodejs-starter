@@ -59,7 +59,7 @@ Jika anda sudah menginstall docker, anda bisa menjalankan perintah `docker-compo
 Apabila ada perubahan pada file kodingan anda, anda bisa build ulang container dengan perintah :
 
 ```
-docker-compose up -d --force --recreate
+docker-compose up -d --force-recreate
 ```
 
 ## Migrasi Database
