@@ -74,7 +74,7 @@ const db = mysql.createPool({
 
 ### Posgresql
 
-Contoh koneksi database Mysql menggunakan libary [pg](https://www.npmjs.com/package/pg).
+Contoh koneksi database Posgresql menggunakan libary [pg](https://www.npmjs.com/package/pg).
 
 ```
 const pg = require('pg');
@@ -92,7 +92,7 @@ const db = new pg.Pool({
 
 ### Mongodb
 
-Contoh koneksi database Mysql menggunakan libary [mongodb](https://www.npmjs.com/package/mongodb).
+Contoh koneksi database Mongodb menggunakan libary [mongodb](https://www.npmjs.com/package/mongodb).
 
 ```
 const {MongoClient} = require('mongodb');
